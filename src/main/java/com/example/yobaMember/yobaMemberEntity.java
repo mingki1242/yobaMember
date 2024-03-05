@@ -20,7 +20,6 @@ import java.sql.Date;
 @ToString
 @Component
 public class yobaMemberEntity {
-
     int id;
     String name;
     String email;
