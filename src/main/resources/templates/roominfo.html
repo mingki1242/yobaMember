@@ -6,7 +6,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>직원 룸 배치</title>
@@ -87,31 +87,31 @@
         <tbody>
         <tr>
             <td>달룸(F)</td>
-            <td>1</td>
+            <td th:text="${roomInfo.F}"></td>
         </tr>
         <tr>
             <td>해룸(E)</td>
-            <td>1</td>
+            <td th:text="${roomInfo.E}"></td>
         </tr>
         <tr>
             <td>벚꽃룸(B)</td>
-            <td>1</td>
+            <td th:text="${roomInfo.B}"></td>
         </tr>
         <tr>
             <td>별룸(A)</td>
-            <td>1</td>
+            <td th:text="${roomInfo.A}"></td>
         </tr>
         <tr>
             <td>홀(CD)</td>
-            <td>1</td>
+            <td th:text="${roomInfo.CD}"></td>
         </tr>
         <tr>
             <td>백업</td>
-            <td>1</td>
+            <td th:text="${roomInfo.BACKUP}"></td>
         </tr>
         <tr>
             <td>BCD</td>
-            <td>1</td>
+            <td></td>
         </tr>
         </tbody>
     </table>
@@ -129,7 +129,9 @@
             <td>달룸(F)</td>
             <td>
                 <select>
-                    <option>1</option>
+                    <option th:each="employee, iterStat : ${employees}"
+                            th:text="${employee}"
+                            th:selected="${iterStat.index == 0}"></option>
                 </select>
             </td>
         </tr>
@@ -137,7 +139,9 @@
             <td>해룸(E)</td>
             <td>
                 <select>
-                    <option>1</option>
+                    <option th:each="employee, iterStat : ${employees}"
+                            th:text="${employee}"
+                            th:selected="${iterStat.index == 1}"></option>
                 </select>
             </td>
         </tr>
@@ -145,7 +149,9 @@
             <td>벚꽃룸(B)</td>
             <td>
                 <select>
-                    <option>1</option>
+                    <option th:each="employee, iterStat : ${employees}"
+                            th:text="${employee}"
+                            th:selected="${iterStat.index == 2}"></option>
                 </select>
             </td>
         </tr>
@@ -153,7 +159,9 @@
             <td>별룸(A)</td>
             <td>
                 <select>
-                    <option>1</option>
+                    <option th:each="employee, iterStat : ${employees}"
+                            th:text="${employee}"
+                            th:selected="${iterStat.index == 3}"></option>
                 </select>
             </td>
         </tr>
@@ -161,7 +169,9 @@
             <td>홀(CD)</td>
             <td>
                 <select>
-                    <option>1</option>
+                    <option th:each="employee, iterStat : ${employees}"
+                            th:text="${employee}"
+                            th:selected="${iterStat.index == 4}"></option>
                 </select>
             </td>
         </tr>
@@ -169,7 +179,9 @@
             <td>백업</td>
             <td>
                 <select>
-                    <option>1</option>
+                    <option th:each="employee, iterStat : ${employees}"
+                            th:text="${employee}"
+                            th:selected="${iterStat.index == 5}"></option>
                 </select>
             </td>
         </tr>
@@ -177,7 +189,9 @@
             <td>BCD</td>
             <td>
                 <select>
-                    <option>1</option>
+                    <option th:each="employee, iterStat : ${employees}"
+                            th:text="${employee}"
+                            th:selected="${iterStat.index == 6}"></option>
                 </select>
             </td>
         </tr>

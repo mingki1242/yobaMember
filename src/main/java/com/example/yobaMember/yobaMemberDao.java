@@ -59,10 +59,8 @@ public class yobaMemberDao {
     //룸 직원 불러오기
     public roomEntity loadRoomMembers()
     {
-        roomEntity result;
         String sql = "select * from room where id = 1";
-        result = (roomEntity) jdbcTemplate.query(sql , new BeanPropertyRowMapper<>(roomEntity.class));
-        return result;
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(roomEntity.class));
     }
 }
 
