@@ -162,9 +162,32 @@ public class yobaMemberController {
         return "exsalaryPage";
     }
 
-    //룸배치 페이지 이동
+    // 룸배치 페이지 이동
     @GetMapping("/roominfo")
-    public String goRoominfo(){return "roominfo";}
+    public String goRoominfo(Model model) {
+        // 룸 정보 로드
+        roomEntity roomInfo = dao.loadRoomMembers();
+        model.addAttribute("roomInfo", roomInfo);
+
+        // 직원 배열 생성
+        ArrayList<String> employees = new ArrayList<>();
+        employees.add(roomInfo.getF());
+        employees.add(roomInfo.getE());
+        employees.add(roomInfo.getB());
+        employees.add(roomInfo.getA());
+        employees.add(roomInfo.getCD());
+        employees.add(roomInfo.getBACKUP());
+
+        // 배열 오른쪽으로 한 칸씩 순환 이동
+        String lastEmployee = employees.get(employees.size() - 1); // 마지막 요소 저장
+        for (int i = employees.size() - 1; i > 0; i--) {
+            employees.set(i, employees.get(i - 1)); // 현재 요소를 이전 요소로 이동
+        }
+        employees.set(0, lastEmployee); // 마지막 요소를 첫 번째로 이동
+
+        model.addAttribute("employees" , employees);
+        return "roominfo";
+    }
 
 
 
