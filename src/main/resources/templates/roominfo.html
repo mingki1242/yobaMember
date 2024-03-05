@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>직원 룸 배치</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        h2 {
+            color: #333333;
+        }
+        table {
+            width: 50%;
+            margin: 0 auto;
+            background-color: white;
+            border-collapse: collapse;
+            border: 2px solid #333333;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #333333;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        td {
+            background-color: #f8f9fa;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .confirm-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .confirm-button:hover {
+            background-color: #0056b3;
+        }
+        .back-button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>직원 룸 배치</h2>
+    <h3>가용 인원 명단 : </h3>
+    <hr>
+    <h3>이번주 배치 내역</h3>
+    <hr>
+
+    <table>
+        <thead>
+        <tr>
+            <th>룸</th>
+            <th>배치 직원</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>달룸(F)</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>해룸(E)</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>벚꽃룸(B)</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>별룸(A)</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>홀(CD)</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>백업</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>BCD</td>
+            <td>1</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+    <h3>다음주 룸배치 예상</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>룸</th>
+            <th>배치 직원</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>달룸(F)</td>
+            <td>
+                <select>
+                    <option>1</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>해룸(E)</td>
+            <td>
+                <select>
+                    <option>1</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>벚꽃룸(B)</td>
+            <td>
+                <select>
+                    <option>1</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>별룸(A)</td>
+            <td>
+                <select>
+                    <option>1</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>홀(CD)</td>
+            <td>
+                <select>
+                    <option>1</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>백업</td>
+            <td>
+                <select>
+                    <option>1</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>BCD</td>
+            <td>
+                <select>
+                    <option>1</option>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- 버튼들 -->
+    <div class="button-container">
+        <button class="confirm-button">확정</button>
+        <button class="back-button" onclick="window.history.back()">뒤로 가기</button>
+    </div>
+</div>
+</body>
+</html>

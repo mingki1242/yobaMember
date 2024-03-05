@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>급여 내용 작성 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 요소들을 수직 방향으로 중앙 정렬합니다. */
+        }
+        .form-container {
+            margin-bottom: 20px;
+            text-align: center; /* 폼 요소들을 가운데 정렬합니다. */
+        }
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 폼 요소들을 가운데 정렬합니다. */
+        }
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            max-width: 400px; /* 입력 폼의 최대 너비 설정 */
+            height: 30px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="submit"],
+        a {
+            padding: 10px 40px;
+            margin-top: 10px;
+            margin-right: 10px; /* 버튼 사이에 오른쪽 여백을 추가합니다. */
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            background-color: #4CAF50;
+        }
+        a:hover {
+            background-color: #388e3c;
+        }
+        .sample-form textarea {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .button-container {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+
+<div align="center">
+    <h2>여러분들의 월급 내역을 작성해 주세요!!</h2>
+    <hr>
+    <div class="container">
+        <div class="form-container">
+            <form method="post" action="/sendsalary">
+                로그인 할 때 입력했던 아이디를 입력 해 주세요!!<br>
+                <input type="text" name="email" class="id-input"><br>
+                월급 상세 내용<br>
+                <textarea name="salary_details" style="height: 500px;width: 362px;"></textarea><br>
+            </form>
+        </div>
+        <div class="button-container">
+            <input type="submit" value="전송">
+            <a href="/">뒤로 가기</a>
+            <a href="/exsalary">양식 보기</a>
+        </div>
+    </div>
+</div>
+
+<script>
+
+</script>
+
+</body>
+</html>

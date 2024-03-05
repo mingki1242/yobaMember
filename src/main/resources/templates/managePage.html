@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: center; /* 텍스트 가운데 정렬 */
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .button {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center; /* 버튼 텍스트 가운데 정렬 */
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+<div align="center">
+  <h2 th:text="${session.MemberInfo.name + ' 님 환영합니다!!'}"></h2><br>
+  <p></p>
+  <h3>현재 등록된 요바나시 직원입니다. 이름 링크를 눌러 직원정보를 수정할 수 있습니다.</h3><br>
+  <p></p>
+  <hr>
+  <p></p>
+  <table>
+    <tr>
+      <th>식별 번호</th> <th>이름</th> <th>이메일</th> <th>전화번호</th> <th>시급</th> <th>주소</th> <th>직책</th> <th>등록일</th>
+    </tr>
+    <tr th:each="member : ${Member}">
+      <td th:text="${member.getId()}"></td>
+      <td th:text="${member.getName()}"></td>
+      <td th:text="${member.getEmail()}"></td>
+      <td th:text="${member.getPhone()}"></td>
+      <td th:text="${member.getMoney()}"></td>
+      <td th:text="${member.getAddress()}"></td>
+      <td th:text="${member.getPosition()}"></td>
+      <td th:text="${member.getRegdate()}"></td>
+    </tr>
+  </table>
+
+  <a href="/gosalary" class="button">월급 정산 현황</a>
+
+</div>
+</body>
+</html>

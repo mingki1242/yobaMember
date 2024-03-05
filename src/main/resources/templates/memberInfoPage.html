@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>요바나시 멤버 리스트</title>
+    <style>
+        .button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .info-line {
+            display: inline-block; /* 한 줄에 표시되도록 설정 */
+            margin-bottom: 10px; /* 각 정보 사이의 간격 설정 */
+        }
+
+        .info-line h5 {
+            margin: 0; /* h5 태그의 margin을 0으로 설정하여 여백 제거 */
+        }
+    </style>
+    <script>
+    function confirmDelete() {
+        const password = prompt("탈퇴 하시겠습니까? 현재 등록된 비밀번호를 입력하여 주십시오:");
+        if (password !== null) {
+            const data = { password };
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/checkPassword", true);
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response) {
+                        if (confirm("요바나시 회원을 탈퇴하시겠습니까?")) {
+                            alert("정상 탈퇴 되었습니다");
+                            window.location.href = "/getout";
+                    }
+                } else {
+                    alert("비밀번호가 일치하지 않습니다.");
+                }
+            }
+        };
+        xhr.send(JSON.stringify(data));
+        }
+    }
+    </script>
+</head>
+<body>
+<div align="center">
+    <h2 th:text= "${session.MemberInfo.name + ' 님 환영합니다!!'}"></h2>
+    <a href="/user/logout">[로그아웃]</a>
+    <a href="#" onclick="confirmDelete()">[회원탈퇴]</a>
+    <hr>
+
+    <h3 th:text = "${session.MemberInfo.name + '님 정보입니다!!'}"></h3>
+
+    <hr>
+    <table>
+        <tr>
+            <th>항목</th>
+            <th>내용</th>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td th:text="${session.MemberInfo.name}"></td>
+        </tr>
+        <tr>
+            <td>아이디</td>
+            <td th:text="${session.MemberInfo.email}"></td>
+        </tr>
+        <tr>
+            <td>현재 협의된 시급</td>
+            <td th:text="${session.MemberInfo.money}"></td>
+        </tr>
+        <tr>
+            <td>직책</td>
+            <td th:text="${session.MemberInfo.position}"></td>
+        </tr>
+        <tr>
+            <td>입사일</td>
+            <td th:text="${session.MemberInfo.regdate}"></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <a href="/sendsalary" class="button">월급 정산</a>
+    <a href="/roominfo" class="button">직원 룸 배치</a>
+</div>
+</body>
+</html>

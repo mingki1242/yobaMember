@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>요바나시 멤버 등록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="text"],
+        select {
+            width: 100%;
+            max-width: 300px;
+            height: 30px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="submit"],
+        a {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            flex: 1;
+            text-align: center;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            background-color: #4CAF50;
+        }
+        a:hover {
+            background-color: #388e3c;
+        }
+        .button-container {
+            display: flex;
+            width: 100%;
+            max-width: 300px;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div align="center">
+    <h2>여러분과 일하게 되어 영광입니다 요바나시는 귀하의 무궁한 발전을 기원 합니다</h2>
+    <hr>
+    <form method="post" action="/user/signup" id="registration-form" onsubmit="return validateForm()">
+        성함<input type="text" name="name"><br>
+        최초 아이디 설정<input type="text" name="email"><br>
+        최초 비밀번호 설정<input type="text" name="password"><br>
+        전화 번호 <input type="text" name="phone" id="phone"><br>
+        주소 <input type="text" name="address"><br>
+        최초 협의된 시급
+        <select name="money">
+            <option>10000</option>
+            <option>10500</option>
+            <option>11000</option>
+            <option>11500</option>
+            <option>12000</option>
+            <option>12500</option>
+            <option>13000</option>
+            <option>13500</option>
+            <option>14000</option>
+            <option>14500</option>
+            <option>15000</option>
+            <option>표시하지 않음</option>
+        </select>
+        <br>
+        직책
+        <select name="position">
+            <option>홀</option>
+            <option>서비스 바</option>
+            <option>주방</option>
+        </select><br><br>
+        <div class="button-container">
+            <input type="submit" value="등록">
+            <a href="/">뒤로 가기</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    // 전화번호 입력칸에 자동으로 하이픈(-)을 추가하는 함수
+    function addHyphen(event) {
+        let phoneInput = event.target;
+        let phone = phoneInput.value.replace(/[^0-9]/g, ''); // 숫자 이외의 문자 제거
+        let formattedPhone;
+
+        if (phone.length < 4) {
+            formattedPhone = phone;
+        } else if (phone.length < 7) {
+            formattedPhone = phone.slice(0, 3) + '-' + phone.slice(3);
+        } else if (phone.length < 11) {
+            formattedPhone = phone.slice(0, 3) + '-' + phone.slice(3, 6) + '-' + phone.slice(6);
+        } else {
+            formattedPhone = phone.slice(0, 3) + '-' + phone.slice(3, 7) + '-' + phone.slice(7, 11);
+        }
+
+        phoneInput.value = formattedPhone;
+    }
+
+    // 전화번호 입력칸에서 keyup 이벤트 발생 시 addHyphen 함수 호출
+    document.getElementById('phone').addEventListener('keyup', addHyphen);
+
+    // 폼 유효성 검사 함수
+    function validateForm() {
+        var form = document.getElementById('registration-form');
+        var inputs = form.querySelectorAll('input[type="text"], select');
+        var isEmpty = false;
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value.trim() === '') {
+                isEmpty = true;
+                break;
+            }
+        }
+
+        if (isEmpty) {
+            alert('Error : 비어있는 항목이 있습니다! 모든 항목을 입력해주세요.');
+            return false;
+        } else {
+            alert('등록이 완료되었습니다.');
+            return true;
+        }
+    }
+</script>
+
+</body>
+</html>
