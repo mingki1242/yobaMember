@@ -72,7 +72,7 @@
 <body>
 <div class="container">
     <h2>직원 룸 배치</h2>
-    <h3>가용 인원 명단 : </h3>
+    <h3>가용 인원 명단 : 박민기 , 김규한 , 송민규 , 김민지 , 최형민 , 전수민</h3>
     <hr>
     <h3>이번주 배치 내역</h3>
     <hr>
@@ -190,8 +190,7 @@
             <td>
                 <select>
                     <option th:each="employee, iterStat : ${employees}"
-                            th:text="${employee}"
-                            th:selected="${iterStat.index == 6}"></option>
+                            th:text="${employee}"></option>
                 </select>
             </td>
         </tr>
