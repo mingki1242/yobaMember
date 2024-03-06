@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.lang.annotation.Target;
 import java.net.http.HttpRequest;
@@ -150,9 +151,25 @@ public class yobaMemberController {
 
     //월급 정산 페이지 이동
     @GetMapping("/sendsalary")
-    public String gosalarypage()
+    public String gosalarypage(Model model , HttpSession session)
     {
-        return "salaryPage";
+        yobaMemberEntity member = (yobaMemberEntity) session.getAttribute("MemberInfo");
+        String email = member.getEmail();
+
+        salaryEntity salary = dao.loadSalary(email);
+        System.out.println(email);
+        System.out.println(salary);
+        if(salary==null)
+        {
+            return "salaryPage";
+        }
+        else {
+            model.addAttribute("salary" , salary);
+            return "salaryPage";
+        }
+
+
+
     }
 
     //월급 양식 페이지 이동
@@ -189,6 +206,19 @@ public class yobaMemberController {
         return "roominfo";
     }
 
-
-
+    //월급 정보 디비 저장
+    @PostMapping("/sendsalary")
+    public String savesalary(HttpSession session , @RequestParam("salary_details") String salaryDetails)
+    {
+        yobaMemberEntity member = (yobaMemberEntity) session.getAttribute("MemberInfo");
+        if(dao.IsEmail(member.getEmail()))
+        {
+            dao.modifySalary(member.getEmail() , salaryDetails);
+            return "memberInfoPage";
+        }
+        else {
+            dao.InsertSalary(member.getEmail() , salaryDetails);
+            return "memberInfoPage";
+        }
+    }
 }

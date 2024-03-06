@@ -15,10 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @Repository
 public class yobaMemberDao {
@@ -62,5 +59,40 @@ public class yobaMemberDao {
         String sql = "select * from room where id = 1";
         return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(roomEntity.class));
     }
+
+    //월급 디비 저장
+    public void InsertSalary(String email , String text)
+    {
+        String sql = "Insert into salary (yoba_email , salary_details) values(?,?)";
+        jdbcTemplate.update(sql , email,text);
+    }
+
+    //월급 정보 불러오기
+    public salaryEntity loadSalary(String email)
+    {
+        String sql = "select * from salary where yoba_email = ?";
+        try{
+            return jdbcTemplate.queryForObject(sql , new Object[]{email}, new BeanPropertyRowMapper<>(salaryEntity.class));
+        }catch (EmptyResultDataAccessException e)
+        {
+            return null;
+        }
+
+    }
+
+    //월급 정보 디비에 있는지 확인
+    public boolean IsEmail(String email) {
+        String sql = "SELECT COUNT(*) FROM salary WHERE yoba_email = ?";
+        int count = jdbcTemplate.queryForObject(sql, Integer.class, email);
+        return count > 0;
+    }
+
+
+    //월급 정보 수정 저장
+    public void modifySalary(String email, String text) {
+        String sql = "UPDATE salary SET salary_details = ? WHERE yoba_email = ?";
+        jdbcTemplate.update(sql, text, email);
+    }
+
 }
 

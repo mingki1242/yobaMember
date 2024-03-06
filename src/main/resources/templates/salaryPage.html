@@ -1,10 +1,3 @@
-<!--title : exsalaryPage-->
-<!--설명 : 월급 보내는 페이지-->
-<!--작성자 : 박민기-->
-<!--생성일 : 2024.03.06-->
-<!--업데이트 : 2024.03.06-->
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,16 +10,16 @@
         .container {
             display: flex;
             flex-direction: column;
-            align-items: center; /* 요소들을 수직 방향으로 중앙 정렬합니다. */
+            align-items: center;
         }
         .form-container {
             margin-bottom: 20px;
-            text-align: center; /* 폼 요소들을 가운데 정렬합니다. */
+            text-align: center;
         }
         .form-container form {
             display: flex;
             flex-direction: column;
-            align-items: center; /* 폼 요소들을 가운데 정렬합니다. */
+            align-items: center;
         }
         input[type="text"],
         select,
@@ -48,7 +41,7 @@
             margin-right: 10px;
             border: none;
             border-radius: 5px;
-            background-color: #007bff;
+            background-color: #007bff; /* 파란색 */
             color: white;
             text-decoration: none;
             transition: background-color 0.3s;
@@ -59,13 +52,13 @@
             overflow: hidden;
         }
         input[type="submit"]:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* 파란색 더 진한 색상 */
         }
         a {
-            background-color: #4CAF50;
+            background-color: #28a745; /* 초록색 */
         }
         a:hover {
-            background-color: #388e3c;
+            background-color: #218838; /* 초록색 더 진한 색상 */
         }
         .sample-form textarea {
             width: 100%;
@@ -90,23 +83,27 @@
     <hr>
     <div class="container">
         <div class="form-container">
-            <form method="post" action="/sendsalary">
-                로그인 할 때 입력했던 아이디를 입력 해 주세요!!<br>
-                <input type="text" name="email" class="id-input"><br>
-                월급 상세 내용<br>
-                <textarea name="salary_details" style="height: 500px;width: 362px;"></textarea><br>
+            <form id="salaryForm" method="post" action="/sendsalary">
+                <label for="salary_details">월급 상세 내용</label><br>
+                <textarea id="salary_details" name="salary_details" style="height: 500px;width: 362px;">[[${salary.salary_details}]]</textarea><br>
+                <div class="button-container">
+                    <input type="submit" value="전송" id="submitButton">
+                    <a href="/" class="back-button">뒤로 가기</a>
+                    <a href="/exsalary" class="back-button">양식 보기</a>
+                </div>
             </form>
-        </div>
-        <div class="button-container">
-            <input type="submit" value="전송">
-            <a href="/">뒤로 가기</a>
-            <a href="/exsalary">양식 보기</a>
         </div>
     </div>
 </div>
 
 <script>
+    document.getElementById("salaryForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // 폼 제출을 막음
 
+        // 여기에 저장이 성공적으로 이루어졌다고 가정하고 알림창을 띄우는 코드를 작성
+        alert("월급 내역이 성공적으로 저장되었습니다.");
+        this.submit();
+    });
 </script>
 
 </body>
