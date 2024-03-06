@@ -9,6 +9,22 @@
 <head>
     <meta charset="UTF-8">
     <title>월급 양식</title>
+    <style>
+        .back-button {
+            padding: 10px 20px;
+            background-color: #28a745; /* 초록색 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none; /* 링크에 밑줄 제거 */
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #218838; /* 더 진한 초록색 */
+        }
+    </style>
+
 </head>
 <body>
 <div align="center">
@@ -70,7 +86,8 @@
         계좌번호 : 123456789 국민<br>
         ---------------------------------------<br>
     </p>
-    <a href = "/">뒤로가기</a>
+    <a href="javascript:history.back()" class="back-button">뒤로 가기</a>
+
 </div>
 </body>
 </html>

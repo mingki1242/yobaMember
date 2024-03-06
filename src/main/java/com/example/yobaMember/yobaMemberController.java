@@ -157,19 +157,9 @@ public class yobaMemberController {
         String email = member.getEmail();
 
         salaryEntity salary = dao.loadSalary(email);
-        System.out.println(email);
-        System.out.println(salary);
-        if(salary==null)
-        {
-            return "salaryPage";
-        }
-        else {
-            model.addAttribute("salary" , salary);
-            return "salaryPage";
-        }
 
-
-
+        model.addAttribute("salary" ,salary);
+        return "salaryPage";
     }
 
     //월급 양식 페이지 이동
@@ -220,5 +210,30 @@ public class yobaMemberController {
             dao.InsertSalary(member.getEmail() , salaryDetails);
             return "memberInfoPage";
         }
+    }
+
+    //월급 정산 현환 페이지 이동
+    @GetMapping("/gosalary")
+    public String checkSalary(Model model)
+    {
+        ArrayList<yobaMemberEntity> memberList;
+        memberList = dao.loadMembers();
+        model.addAttribute("Member" , memberList);
+        return "manageSalary";
+    }
+
+    //각 직원 월급 정산 파악
+    @GetMapping("/salaryCheckMember")
+    public String salaryCheckMember(@RequestParam("email") String email , Model model)
+    {
+        salaryEntity salary = dao.loadSalary(email);
+        yobaMemberEntity member = dao.findByEmail(email);
+        System.out.println(email);
+        System.out.println(member.getName());
+        System.out.println(salary.getSalary_details());
+        model.addAttribute("member" , member);
+        model.addAttribute("salary" , salary);
+
+        return "MemberSalaryCheckPage";
     }
 }
