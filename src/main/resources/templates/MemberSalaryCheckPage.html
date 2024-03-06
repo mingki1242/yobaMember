@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>직원의 정보를 확인하세요</title>
+</head>
+<body>
+    <div align="center">
+        <h2 th:text="${member.name} + ' 직원의 월급 정산 현황입니다'"></h2>
+        <p th:text="${salary.salary_details}">
+
+        </p>
+    </div>
+</body>
+</html>

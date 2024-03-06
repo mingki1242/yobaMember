@@ -94,5 +94,7 @@ public class yobaMemberDao {
         jdbcTemplate.update(sql, text, email);
     }
 
+
+
 }
 

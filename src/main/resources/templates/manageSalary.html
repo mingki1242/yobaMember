@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>월급 정산 현황</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div>
+        <h2>직원의 이름을 눌러 월급 정산 현황을 파악하세요!!</h2>
+
+        <table>
+            <tr>
+                <th>이름</th>
+            </tr>
+            <tr th:each="member, rowStat : ${Member}" th:class="${rowStat.odd} ? 'odd-row' : 'even-row'">
+                <td><a th:href="@{/salaryCheckMember(email=${member.email})}" th:text="${member.name}"></a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

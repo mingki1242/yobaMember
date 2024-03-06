@@ -85,10 +85,10 @@
         <div class="form-container">
             <form id="salaryForm" method="post" action="/sendsalary">
                 <label for="salary_details">월급 상세 내용</label><br>
-                <textarea id="salary_details" name="salary_details" style="height: 500px;width: 362px;">[[${salary.salary_details}]]</textarea><br>
+                <textarea id="salary_details" name="salary_details" style="height: 500px;width: 362px;">[[${salary != null ? salary.salary_details : ''}]]</textarea><br>
                 <div class="button-container">
                     <input type="submit" value="전송" id="submitButton">
-                    <a href="/" class="back-button">뒤로 가기</a>
+                    <a href="javascript:history.back()" class="back-button">뒤로 가기</a>
                     <a href="/exsalary" class="back-button">양식 보기</a>
                 </div>
             </form>
