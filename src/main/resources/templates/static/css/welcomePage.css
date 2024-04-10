@@ -1,0 +1,120 @@
+/* 모바일 및 데스크탑 공통 스타일 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.content {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 496px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-container .label {
+    flex: 0 0 auto;
+    width: 120px;
+    color: black;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    margin-right: 10px;
+    line-height: 40px;
+}
+
+.input-container input[type="text"] {
+    flex: 1;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-btn,
+.button-text {
+    width: 100%;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+
+.button-text {
+    background-color: #4CAF50;
+}
+
+.welcome {
+    margin-bottom: 100px;
+    color: black;
+    font-size: 25px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    word-wrap: break-word;
+}
+
+.info {
+    margin-top: 100px;
+    color: black;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    word-wrap: break-word;
+}
+
+/* 데스크탑에서만 적용되는 스타일 */
+@media only screen and (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .image {
+        width: 50%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .content {
+        margin-top: 0;
+        padding: 40px;
+        text-align: left;
+    }
+}
